@@ -1,0 +1,149 @@
+/*
+ * Style.css - presentation styles for MyWiki, the Simple Wiki
+ * 
+ * Feel free to modify this at will, especially if you made changes to the
+ * main template yourself.
+ *
+ */
+
+html {
+    background: #383634;
+    padding: 0;
+}
+body {
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+    font-size: 12pt;
+    margin: 0;
+    background: #D2CCC3;
+    color: #262524;
+}
+
+a, a:visited {
+    text-decoration: none;
+    color: #2D738F;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p, blockquote, li {
+    line-height: 1.3em;
+}
+
+body > header h1 {
+    padding: 0.5em 0.4em;
+    margin: 0;
+    background: #C2B499
+}
+
+body > header nav ul {
+    list-style-type: none;
+    float: left;
+    width: 12em;
+    padding: 0;
+    margin: 0;
+}
+
+body > header nav ul li {
+    background: #D7B677;
+}
+body > header nav ul li a {
+    display: block;
+    color: #4D412A;
+    padding: 0.8em;
+    margin-right: 0.3em;
+    transition: color 0.2s, background 0.2s;
+}
+
+body > header nav ul li a:hover {
+    color: #AEC9F3;
+    background: #4372BD;
+    text-decoration: none;
+}
+
+body > header nav ul li a.active {
+    color: #AEC9F3;
+    background: #225097;
+    text-decoration: none;
+}
+
+body > section#content {
+    margin: 0 1em 0 13em;
+}
+
+input[type="text"], textarea {
+    padding: 5px 0;
+    border: 1px solid #334433;
+}
+
+input[type="text"]:focus, textarea:focus {
+    box-shadow: 0px 0px 5px #DD1111;
+}
+
+textarea[name="newcontent"] {
+    width: 90%;
+    height: 10em;
+}
+
+body > footer {
+    clear: both;
+    text-align: center;
+    padding: 1em;
+    background: #383634; 
+    color: #FEFEFE
+}
+
+body > header nav div.menutrigger {
+    display: none;
+}
+
+@media screen and (max-width: 900px) {
+    body > header nav {
+        background: #8F97CB;
+    }
+
+    body > header nav ul {
+        width: 100%;
+        list-style-type: none;
+        padding: 0;
+        margin: 0 0 10px 0;
+        background: #CCBC9E;
+    }
+
+    /* Menu Button */
+    body > header nav div.menutrigger {
+        padding: 15px 10px;
+        background: #2B5AA6;
+        display: block;
+        width: 80px;
+        text-align: center;
+        color: #EEEEEE;
+        cursor: pointer;
+    }
+
+    body > header nav ul li {
+        background: #D7B677;
+        float: left;
+        width: 50%;
+    }
+
+    body > header nav ul li.active {
+        width: 100%;
+    }
+
+    body > header nav ul li:after {
+        content: '.';
+        height: 0;
+        visibility: hidden;
+        clear: both;
+    }
+
+    body > section#content {
+        margin: 0.3em;
+    }
+
+    textarea, input[type="text"] {
+        width: 95%;
+    }
+}
