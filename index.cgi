@@ -40,6 +40,27 @@ home_cont="
     But, most importantly, HAVE FUN!
 </p>"
 
+help_cont="
+<p>
+    <strong>MyWiki</strong> is a ready-to-deploy, out-of-the-box wiki engine
+    for Unix servers that requires little to no configuration.
+</p>
+<p>
+    To create a new wiki page, click <strong>Create a new page</strong> in the
+    menu. The page editor allows only for plain text (no hyperlinks or other
+    formatting) to be used, but paragraphs are separated by inserting two
+    consecutive line breaks. Hopefully, future releases of MyWiki will include
+    a simple plain text to html interpreter similar to 
+    <a href=\"http://daringfireball.net/projects/markdown/\">MarkDown</a> so 
+    that the possibilities are expanded, images included.
+</p>
+<p>
+    Note that you can edit any page that you have created (not including these
+    predefined ones) by clicking <strong>Edit this page</strong> on the top
+    right corner of an existing page.
+</p>
+"
+
 # boilerplate to create new pages:
 # UPDATE: now a function!
 # 1 ) The title of the page (empty if new)
@@ -47,7 +68,8 @@ home_cont="
 # 3 ) The tag <input type="hidden" name="update" value="true" /> (empty if new)
 # 4 ) The pid of the page (empty if new)
 create_cont() {
-    echo "<form action=\"index.cgi\" method=\"post\">
+    echo "
+<form action=\"index.cgi\" method=\"post\">
     <label for=\"newtitle\">Page title:</label><br />
     <input type=\"text\" name=\"newtitle\" value=\""$1"\" /><br />
     <label for=\"newcontent\">Page content:</label><br />
@@ -159,6 +181,10 @@ if [ "$REQUEST_METHOD" == "GET" ]; then
             title="All pages in this wiki"
             content=$(search)
             ;;
+        "about" ) 
+            title="About MyWiki"
+            content="$help_cont"
+            ;;
         "edit" )
             title="Now editing \"$(sqlite3 index.db "SELECT title FROM main WHERE id=$argument")\""
             content=$(create_cont "$(sqlite3 index.db "SELECT title FROM main WHERE id=$argument")" "$(sqlite3 index.db "SELECT content FROM main WHERE id=$argument")" "<input type=\"hidden\" name=\"update\" value=\"true\" />" $argument)
@@ -247,7 +273,7 @@ cat <<EOF
         </section>
         <footer>
             <p>
-                Made with <a href="http://sonokisworld.appspot.com">MyWiki, the Simple Wiki</a> - Est. 2014
+                Made with <a href="http://mysimplewiki.googlecode.com">MyWiki, the Simple Wiki</a> - Est. 2014
             </p>
         </footer>
         <script type="text/javascript" src="main.js"></script>
